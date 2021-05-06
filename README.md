@@ -1,2 +1,1 @@
-# mvn_shoppingcart
-This is Maven Project of Shoppingcart
+This is for testing nexus
