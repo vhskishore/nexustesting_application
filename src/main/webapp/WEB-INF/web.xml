@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+
+<distributable/>
+
+
+	<servlet>
+		<servlet-name>BrowseCategories</servlet-name>
+		<servlet-class>com.servlets.browseCategories</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AddToShoppingCart</servlet-name>
+		<servlet-class>com.servlets.shoppingCart</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ViewShoppingCart</servlet-name>
+		<servlet-class>com.servlets.viewShoppingCart</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>BrowseCategories</servlet-name>
+		<url-pattern>/browsecategories</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AddToShoppingCart</servlet-name>
+		<url-pattern>/addtocart</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ViewShoppingCart</servlet-name>
+		<url-pattern>/viewshoppingcart</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>welcome.jsp</welcome-file>
+	</welcome-file-list>
+<!--
+<security-constraint>
+      	<web-resource-collection>
+        		<web-resource-name>HtmlAdaptor</web-resource-name>
+        		        		<url-pattern>/*</url-pattern>
+        		<http-method>GET</http-method>
+        		<http-method>POST</http-method>
+       	</web-resource-collection>
+       	<auth-constraint>
+        		<role-name>admin</role-name>
+       	</auth-constraint>
+      </security-constraint>
+
+
+      <login-config>
+      	<auth-method>BASIC</auth-method>
+      	<realm-name>ShoppingCart</realm-name>
+      </login-config>
+
+       <security-role>
+       	<role-name>admin</role-name>
+      </security-role>
+
+-->
+
+</web-app>
