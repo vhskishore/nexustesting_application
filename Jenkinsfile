@@ -16,10 +16,5 @@ pipeline{
                 sh "git clone https://github.com/vhskishore/nexustesting_application.git"
             }
         }    
-        stage("mavenbuild"){
-            steps{
-                sh "mvn clean package"
-            }
-        }
     }
 }
