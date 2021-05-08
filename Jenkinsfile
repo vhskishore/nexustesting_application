@@ -6,8 +6,10 @@ pipeline{
     }
     stages{
         stage("Cleaning Workspace"){
-            echo "Cleaning Workspace...."
-            CleanWs()
+            steps{
+                echo "Cleaning Workspace...."
+                CleanWs()
+            }
         }
         stage("gitclone"){
             steps{
