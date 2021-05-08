@@ -10,11 +10,6 @@ pipeline{
                 echo 'Cleaning Workspace....'
                 CleanWs()
             }
-        }
-        stage("gitclone"){
-            steps{
-                sh "git clone https://github.com/vhskishore/nexustesting_application.git"
-            }
-        }    
+        }  
     }
 }
