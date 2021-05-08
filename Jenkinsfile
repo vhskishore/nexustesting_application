@@ -1,42 +1,41 @@
 pipeline{
     agent any
+    environment {
+    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+    VERSION = readMavenPom().getVersion()
+    }
     stages{
-        stage("git clone"){
+        stage("Cleaning Workspace"){
+            echo "Cleaning Workspace...."
+            CleanWs()
+        }
+        stage("gitclone"){
             steps{
-                sh "git clone https://github.com/vhskishore/mvn_shoppingcart.git"
+                sh "git clone https://github.com/vhskishore/nexustesting_application.git"
             }
         }    
-        stage("maven build"){
+        stage("mavenbuild"){
             steps{
                 sh "mvn clean package"
             }
         }
-        stage("target"){
-           steps{
-                sh "ls /var/lib/jenkins/workspace/mvn_shoppingcart/target"
-           }
-        }
         stage("upload wat to nexus"){
            steps{
-               script{
-                   def mavenPom = readMavenPom file: 'pom.xml'
-                   def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "mvn_shoppingcart-snapshot" : "mvn_shoppingcart-release"
-                   nexusArtifactUploader artifacts: [
+                nexusArtifactUploader artifacts: [
                     [
                         artifactId: 'shoppingcart', 
                         classifier: '', 
-                        file: 'target/shoppingcart.war', 
+                        file: 'target/nexustesting_application.war', 
                         type: 'war'
                     ]
                 ], 
                 credentialsId: 'nexus3', 
                 groupId: 'shoppingcart', 
-                nexusUrl: '100.24.98.144:8081', 
+                nexusUrl: '3.235.154.176:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository: "${nexusRepoName}", 
-                version: "${mavenPom.version}"
-               }
+                repository: 'nexustesting_application', 
+                version: "${VERSION}"
            }
         }
     }
