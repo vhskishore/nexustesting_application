@@ -28,7 +28,7 @@ pipeline{
                     [
                         artifactId: 'shoppingcart', 
                         classifier: '', 
-                        file: 'target/nexustesting_application.war', 
+                        file: 'target/shoppingcart.war', 
                         type: 'war'
                     ]
                 ], 
