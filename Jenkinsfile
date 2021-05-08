@@ -5,9 +5,13 @@ pipeline{
     VERSION = readMavenPom().getVersion()
     }
     stages{
+        stage("Cleaning Workspace"){
+            echo "Cleaning Workspace...."
+            CleanWs()
+        }
         stage("gitclone"){
             steps{
-                sh "git clone https://github.com/vhskishore/mvn_shoppingcart.git"
+                sh "git clone https://github.com/vhskishore/nexustesting_application.git"
             }
         }    
         stage("mavenbuild"){
@@ -15,18 +19,13 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        stage("target"){
-           steps{
-                sh "ls /var/lib/jenkins/workspace/mvn_shoppingcart/target"
-           }
-        }
         stage("upload wat to nexus"){
            steps{
                 nexusArtifactUploader artifacts: [
                     [
                         artifactId: 'shoppingcart', 
                         classifier: '', 
-                        file: 'target/shoppingcart.war', 
+                        file: 'target/nexustesting_application.war', 
                         type: 'war'
                     ]
                 ], 
@@ -35,7 +34,7 @@ pipeline{
                 nexusUrl: '3.235.154.176:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository: 'mvn_shoppingcart', 
+                repository: 'nexustesting_application', 
                 version: "${VERSION}"
            }
         }
