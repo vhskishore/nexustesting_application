@@ -34,5 +34,11 @@ pipeline{
                 version: "${VERSION}"
            }
         }
+        stage("get artifact from nexus"){
+            steps{
+                sh '''cd /var/lib/jenkins/getartifactsfromnexus
+                curl http://34.237.124.164:8081/repository/${nexustesting_application}/shoppingcart/shoppingcart/${VERSION}/shoppingcart-${VERSION}.war'''
+            }
+        }
     }
 }
