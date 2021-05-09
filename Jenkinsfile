@@ -27,7 +27,7 @@ pipeline{
                 ], 
                 credentialsId: 'nexus3', 
                 groupId: 'shoppingcart', 
-                nexusUrl: '34.237.124.164:8081', 
+                nexusUrl: '3.231.207.228:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'nexustesting_application', 
