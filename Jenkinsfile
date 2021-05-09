@@ -5,13 +5,6 @@ pipeline{
     VERSION = readMavenPom().getVersion()
     }
     stages{
-        stage("Cleaning Workspace"){
-            steps{
-                    sh '''echo "Cleaning Workspace...."
-                    CleanWs()
-                    echo "Workspace cleaned...."'''
-            }
-        }
         stage("gitclone"){
             steps{
                 sh "git clone https://github.com/vhskishore/nexustesting_application.git"
