@@ -27,7 +27,7 @@ pipeline{
                 ], 
                 credentialsId: 'nexus3', 
                 groupId: 'shoppingcart', 
-                nexusUrl: '3.231.207.228:8081', 
+                nexusUrl: '44.192.102.92:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'nexustesting_application', 
@@ -38,7 +38,7 @@ pipeline{
             steps{
                 sh '''
                 cd /var/lib/jenkins/getartifactsfromnexus/
-                curl http://3.231.207.228:8081/repository/nexustesting_application/shoppingcart/shoppingcart/\'${VERSION}\'/shoppingcart-\'${VERSION}\'.war --output shoppingcart-${VERSION}.war'''
+                curl http://44.192.102.92:8081/repository/nexustesting_application/shoppingcart/shoppingcart/\'${VERSION}\'/shoppingcart-\'${VERSION}\'.war --output shoppingcart-${VERSION}.war'''
             }
         }
     }
