@@ -41,11 +41,5 @@ pipeline{
                 curl http://44.192.102.92:8081/repository/nexustesting_application/shoppingcart/shoppingcart/\'${VERSION}\'/shoppingcart-\'${VERSION}\'.war --output shoppingcart-8.0.war'''
             }
         }
-        stage("deploying to tomcat"){
-            steps{
-                sh '''
-                scp /var/lib/jenkins/getartifactsfromnexus/shoppingcart-8.0.war root@3.231.216.151:/root/apache-tomcat-8.5.65/webapps '''
-            }
-        }
     }
 }
