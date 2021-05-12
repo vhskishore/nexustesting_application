@@ -15,7 +15,7 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        stage("upload wat to nexus"){
+        stage("upload war to nexus"){
            steps{
                 nexusArtifactUploader artifacts: [
                     [
@@ -39,6 +39,12 @@ pipeline{
                 sh '''
                 cd /var/lib/jenkins/getartifactsfromnexus/
                 curl http://44.192.102.92:8081/repository/nexustesting_application/shoppingcart/shoppingcart/\'${VERSION}\'/shoppingcart-\'${VERSION}\'.war --output shoppingcart-${VERSION}.war'''
+            }
+        }
+        stage("deploying to tomcat"){
+            steps{
+                sh '''
+                scp /var/lib/jenkins/getartifactsfromnexus/shoppingcart-${VERSION}.war root@3.231.216.151:/root/apache-tomcat-8.5.65/webapps '''
             }
         }
     }
