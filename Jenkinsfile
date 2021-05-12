@@ -38,7 +38,7 @@ pipeline{
             steps{
                 sh '''
                 cd /var/lib/jenkins/getartifactsfromnexus/
-                curl http://44.192.102.92:8081/repository/nexustesting_application/shoppingcart/shoppingcart/\'${VERSION}\'/shoppingcart-\'${VERSION}\'.war --output shoppingcart-8.0.war'''
+                curl http://44.192.102.92:8081/repository/nexustesting_application/shoppingcart/shoppingcart/8.0/shoppingcart-8.0.war '''
             }
         }
         stage("deploying to tomcat"){
